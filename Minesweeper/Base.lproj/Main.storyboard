@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,169 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Minesweeper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="L3Z-HP-h7Y">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minesweeper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYH-fz-jwM">
+                                <rect key="frame" x="0.0" y="20" width="375" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="atN-jp-b6J"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="30"/>
+                                <color key="textColor" red="0.34893034101056281" green="0.54426212554672682" blue="0.99151128530502319" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="1" height="1"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nbq-8L-aAA" userLabel="Header Stack View">
+                                <rect key="frame" x="0.0" y="95" width="375" height="125"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VkF-dN-tZ8" userLabel="Left Buttons Stack View">
+                                        <rect key="frame" x="0.0" y="29" width="125" height="67"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E09-Cf-ldP" userLabel="New Game">
+                                                <rect key="frame" x="0.0" y="0.0" width="125" height="33"/>
+                                                <state key="normal" image="newgame"/>
+                                                <connections>
+                                                    <action selector="newGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W5l-ug-VPf"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTQ-KL-opM" userLabel="Flag Button">
+                                                <rect key="frame" x="0.0" y="43" width="125" height="24"/>
+                                                <state key="normal" image="flagbutton"/>
+                                                <connections>
+                                                    <action selector="flagButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n8a-d2-GF2"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odu-J0-4T6" userLabel="Stopwatch Label">
+                                        <rect key="frame" x="125" y="37.5" width="125" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="125" id="cpz-kr-C1z"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="vPN-tZ-RmK"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Kri-7U-VW8" userLabel="Right Buttons Stack View">
+                                        <rect key="frame" x="250" y="6" width="125" height="113"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHl-ew-35N" userLabel="Easy">
+                                                <rect key="frame" x="0.0" y="0.0" width="125" height="33"/>
+                                                <state key="normal" image="easytoggled"/>
+                                                <connections>
+                                                    <action selector="easy:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IAp-0y-Edb"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYl-DB-EDt" userLabel="Medium">
+                                                <rect key="frame" x="0.0" y="40" width="125" height="33"/>
+                                                <state key="normal" image="medium"/>
+                                                <connections>
+                                                    <action selector="medium:" destination="BYZ-38-t0r" eventType="touchUpInside" id="laV-MC-kj3"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dut-AY-aKt" userLabel="Hard">
+                                                <rect key="frame" x="0.0" y="80" width="125" height="33"/>
+                                                <state key="normal" image="hard"/>
+                                                <connections>
+                                                    <action selector="hard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2nz-GH-awT"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="125" id="YF5-O6-aXV"/>
+                                </constraints>
+                            </stackView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BfP-rl-kwv">
+                                <rect key="frame" x="0.0" y="220" width="375" height="447"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="2ex-Xn-DHz">
+                                    <size key="itemSize" width="24" height="24"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MinefieldCell" id="23f-ca-S84" customClass="MinefieldCollectionViewCell" customModule="Minesweeper" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="20" width="24" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ALa-2U-AcS">
+                                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cellover" translatesAutoresizingMaskIntoConstraints="NO" id="6S1-F5-JZY">
+                                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="ALa-2U-AcS" firstAttribute="top" secondItem="23f-ca-S84" secondAttribute="top" id="0Ly-7g-Ukx"/>
+                                            <constraint firstItem="ALa-2U-AcS" firstAttribute="bottom" secondItem="23f-ca-S84" secondAttribute="bottom" id="BrG-gk-s93"/>
+                                            <constraint firstItem="6S1-F5-JZY" firstAttribute="leading" secondItem="23f-ca-S84" secondAttribute="leading" id="Jjm-Iw-6w3"/>
+                                            <constraint firstItem="6S1-F5-JZY" firstAttribute="bottom" secondItem="23f-ca-S84" secondAttribute="bottom" id="QFN-uH-6Gk"/>
+                                            <constraint firstItem="6S1-F5-JZY" firstAttribute="trailing" secondItem="23f-ca-S84" secondAttribute="trailing" id="b3V-Km-ffg"/>
+                                            <constraint firstItem="ALa-2U-AcS" firstAttribute="trailing" secondItem="23f-ca-S84" secondAttribute="trailing" id="fMg-NK-YFR"/>
+                                            <constraint firstItem="ALa-2U-AcS" firstAttribute="leading" secondItem="23f-ca-S84" secondAttribute="leading" id="lNU-jU-3OQ"/>
+                                            <constraint firstItem="6S1-F5-JZY" firstAttribute="top" secondItem="23f-ca-S84" secondAttribute="top" id="tHV-zY-1Ta"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="bottomImageView" destination="ALa-2U-AcS" id="0QZ-rJ-KLV"/>
+                                            <outlet property="topImageView" destination="6S1-F5-JZY" id="eiZ-5D-rsO"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="BfP-rl-kwv" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="0me-QP-pdN"/>
+                            <constraint firstItem="nbq-8L-aAA" firstAttribute="top" secondItem="OYH-fz-jwM" secondAttribute="bottom" id="7Yq-fP-7C5"/>
+                            <constraint firstItem="OYH-fz-jwM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Af4-Tr-870"/>
+                            <constraint firstItem="nbq-8L-aAA" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="BWk-bM-1aj"/>
+                            <constraint firstItem="OYH-fz-jwM" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="DEO-Jh-uob"/>
+                            <constraint firstItem="nbq-8L-aAA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HD3-Cg-a78"/>
+                            <constraint firstItem="OYH-fz-jwM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="MUX-rP-dJS"/>
+                            <constraint firstItem="BfP-rl-kwv" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="OhC-pz-UJh"/>
+                            <constraint firstItem="L3Z-HP-h7Y" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="S0f-Eu-6jw"/>
+                            <constraint firstItem="L3Z-HP-h7Y" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ckT-9L-QZC"/>
+                            <constraint firstItem="BfP-rl-kwv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lpU-hw-Wq1"/>
+                            <constraint firstItem="L3Z-HP-h7Y" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="tIc-6B-c1K"/>
+                            <constraint firstItem="BfP-rl-kwv" firstAttribute="top" secondItem="nbq-8L-aAA" secondAttribute="bottom" id="tex-kn-hwa"/>
+                            <constraint firstItem="L3Z-HP-h7Y" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="vaZ-X9-D1i"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="BfP-rl-kwv" id="Sug-Zl-eEg"/>
+                        <outlet property="easy" destination="tHl-ew-35N" id="S10-0W-Bfc"/>
+                        <outlet property="flagButton" destination="cTQ-KL-opM" id="OJk-np-V9S"/>
+                        <outlet property="hard" destination="Dut-AY-aKt" id="3Zg-Xq-6Eb"/>
+                        <outlet property="medium" destination="aYl-DB-EDt" id="O1R-TT-7Vr"/>
+                        <outlet property="stopwatchLabel" destination="Odu-J0-4T6" id="vOB-d3-Kip"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="background" width="414" height="736"/>
+        <image name="cellover" width="24" height="24"/>
+        <image name="easytoggled" width="100" height="33"/>
+        <image name="flagbutton" width="24" height="24"/>
+        <image name="hard" width="100" height="33"/>
+        <image name="medium" width="100" height="33"/>
+        <image name="newgame" width="100" height="33"/>
+    </resources>
 </document>
